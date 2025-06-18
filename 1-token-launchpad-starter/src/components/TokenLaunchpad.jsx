@@ -14,6 +14,11 @@ export function TokenLaunchpad() {
   // createToken function to create a new token
   // It will create a new mint account and initialize it with the provided parameters
   async function createToken() {
+    if (!wallet.connected) {
+      console.error("Wallet not connected");
+      throw new Error("Wallet not connected");
+    }
+
     const name = document.getElementById("name");
     const symbol = document.getElementById("symbol");
     const imageUrl = document.getElementById("imageUrl");
